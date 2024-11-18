@@ -1,7 +1,5 @@
 plugins {
     alias(libs.plugins.android.library)
-    //id("com.android.library")
-    id("maven-publish");
 }
 
 android {
@@ -38,33 +36,4 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
-}
-
-
-//PUBLISHING
-publishing {
-    publications {
-        create<MavenPublication>("default") {
-            //from(components["default"])
-            //artifact("$buildDir/outputs/aar/iprotekcore.aar")
-
-            groupId = "net.iprotek"  // Your group ID
-            artifactId = "iprotekcore"  // Your library name (artifact ID)
-            version = "1.0.0"  // Library version
-        }
-    }
-
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            // URL for GitHub Packages repository
-            url = uri("https://github.com/iprotek/android-lib-core")
-
-            credentials {
-                // Use project properties or environment variables for security
-                username = project.findProperty("gpr.user").toString()
-                password = project.findProperty("gpr.token").toString()
-            }
-        }
-    }
 }
